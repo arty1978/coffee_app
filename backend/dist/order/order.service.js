@@ -23,15 +23,14 @@ let OrderService = class OrderService {
         this.coffeeOrderModel = coffeeOrderModel;
         this.client = client;
     }
-    async create(createCoffeOrderDto) {
-        const makeCoffee = new this.coffeeOrderModel(createCoffeOrderDto);
+    async create(createCoffeOrder) {
+        console.log('Order being saved in MongoDB:', createCoffeOrder);
+        const makeCoffee = new this.coffeeOrderModel(createCoffeOrder);
+        this.client.emit('coffee_ordered', order_schema_1.Order);
         return makeCoffee.save();
     }
     async findAll() {
         return this.coffeeOrderModel.find().exec();
-    }
-    async publishEvent() {
-        this.client.emit('coffee_ordered', order_schema_1.Order);
     }
 };
 OrderService = __decorate([

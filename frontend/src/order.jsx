@@ -3,28 +3,36 @@ import React, { useState } from "react";
 function OrderForm() {
     const [order, setOrder] = useState("");
     const [ordersList, setOrdersList] = useState([]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // make a POST request to the API to create a new order
-        const response = await fetch("http://localhost:3000/order", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ order }),
-        });
-        console.log(response, '!!!');
-
-        if (response.ok) {
-            // if the request was successful, add the order to the ordersList
-            const newOrder = await response.json();
-            console.log(newOrder, '8888');
-            setOrdersList([...ordersList, newOrder]);
-            console.log(ordersList, 'is empty?');
-            setOrder("");
-        } else {
-            console.log("Failed to create order");
+        try {
+            const orderData = {
+                email: order, // replace with the actual email
+                orderTime: new Date().getTime(),
+                orderStatus: 'ordered',
+            };
+            // make a POST request to the API to create a new order
+            const response = await fetch("http://localhost:3000/order", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(orderData),
+            });
+            if (response.ok) {
+                // if the request was successful, add the order to the ordersList
+                const newOrder = await response.json();
+                console.log(newOrder, 'response');
+                setOrdersList([...ordersList, newOrder]);
+                setOrder("");
+                console.log([...ordersList, newOrder]);
+            } else {
+                console.log("Failed to create order");
+            }
+        } catch (error) {
+            console.error(error);
         }
     };
 

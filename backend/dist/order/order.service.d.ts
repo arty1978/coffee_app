@@ -5,7 +5,6 @@ export declare class OrderService {
     private readonly coffeeOrderModel;
     private client;
     constructor(coffeeOrderModel: Model<Order>, client: ClientProxy);
-    create(createCoffeOrderDto: Order): Promise<Order>;
+    create(createCoffeOrder: Order): Promise<Order>;
     findAll(): Promise<Order[]>;
-    publishEvent(): Promise<void>;
 }

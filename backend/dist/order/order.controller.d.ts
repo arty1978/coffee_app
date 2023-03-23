@@ -1,4 +1,4 @@
-import { Order } from 'src/models/order.schema';
+import { Order } from '../models/order.schema';
 import { OrderService } from './order.service';
 export declare class OrderController {
     private readonly orderService;
