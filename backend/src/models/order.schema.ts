@@ -10,7 +10,7 @@ export class Order {
     email: string;
 
     @Prop()
-    orderTime: Date;
+    orderTime: number;
 
     @Prop()
     orderStatus: string;
