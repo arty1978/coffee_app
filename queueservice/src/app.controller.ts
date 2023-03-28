@@ -8,21 +8,15 @@ import { Order } from '../../backend/src/models/order.schema';
 export class AppController {
 
 
-  @EventPattern('coffee-created')
-  async handleCoffeCreatedEvent(orderStatus: Record<string, unknown>) {
-    console.log(orderStatus);
-  }
-
-  // @EventPattern('coffee-done')
-  // async handleCoffeDoneEvent(orderStatus: Record<string, unknown>) {
-  //   console.log(orderStatus, '!!!');
-  // }
+  //   @EventPattern('coffee_order_created')
+  //   async handleCoffeeOrderCreated(order: Order) {
+  //     console.log('Order created:', order);
+  //   }
 
   @MessagePattern('coffee-created')
-  async handleCoffeeDone(@Payload() order: Order) {
+  async handleCoffeeOrderCreated(@Payload() order: Order) {
 
-    // Log the order with the updated status
     console.log('Coffee done:', order);
   }
-
 }
+

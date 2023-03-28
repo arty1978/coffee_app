@@ -17,7 +17,6 @@ const common_1 = require("@nestjs/common");
 const microservices_1 = require("@nestjs/microservices");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
-const order_schema_1 = require("../models/order.schema");
 let OrderService = class OrderService {
     constructor(coffeeOrderModel, client) {
         this.coffeeOrderModel = coffeeOrderModel;
@@ -26,7 +25,7 @@ let OrderService = class OrderService {
     async create(createCoffeOrder) {
         console.log('Order being saved in MongoDB:', createCoffeOrder);
         const makeCoffee = new this.coffeeOrderModel(createCoffeOrder);
-        this.client.emit('coffee_ordered', order_schema_1.Order);
+        this.client.emit('coffee_order_created', createCoffeOrder);
         return makeCoffee.save();
     }
     async findAll() {

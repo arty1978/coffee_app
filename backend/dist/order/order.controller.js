@@ -24,8 +24,8 @@ let OrderController = class OrderController {
         console.log('Received order data:', orderData);
         const order = new order_schema_1.Order();
         order.email = orderData.email;
-        order.orderTime = orderData.orderTime;
-        order.orderStatus = orderData.orderStatus;
+        order.orderTime = new Date().getTime();
+        order.orderStatus = 'ordered';
         return await this.orderService.create(order);
     }
     async findAll() {

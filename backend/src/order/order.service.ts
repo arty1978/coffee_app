@@ -11,7 +11,7 @@ export class OrderService {
     async create(createCoffeOrder: Order): Promise<Order> {
         console.log('Order being saved in MongoDB:', createCoffeOrder);
         const makeCoffee = new this.coffeeOrderModel(createCoffeOrder);
-        this.client.emit('coffee_ordered', Order);
+        this.client.emit('coffee_order_created', createCoffeOrder);
         return makeCoffee.save()
     }
     async findAll(): Promise<Order[]> {

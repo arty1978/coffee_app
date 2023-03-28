@@ -19,7 +19,7 @@ __decorate([
 ], Order.prototype, "email", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", Date)
+    __metadata("design:type", Number)
 ], Order.prototype, "orderTime", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),

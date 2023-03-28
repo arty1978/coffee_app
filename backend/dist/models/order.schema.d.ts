@@ -26,7 +26,7 @@ import { HydratedDocument } from 'mongoose';
 export type OrderDocument = HydratedDocument<Order>;
 export declare class Order {
     email: string;
-    orderTime: Date;
+    orderTime: number;
     orderStatus: string;
 }
 export declare const OrderSchema: import("mongoose").Schema<Order, import("mongoose").Model<Order, any, any, any, import("mongoose").Document<unknown, any, Order> & Omit<Order & {
